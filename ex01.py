@@ -13,10 +13,14 @@ funcao = {
 atual = inicial
 #input = "0000 1000 0100 0010 0001 1100 1010 1001 0110 0101 0011 1110 1101 1011 0111 1111" 
 input = input() 
+#input = input*50000
 palavras = input.split()
 
 for palavra in palavras:
     for caractere in palavra:
+        if caractere not in alfabeto:
+            print("caractere incorreto")
+            break
         atual = funcao[atual][caractere]
     if atual in aceitacao:
         print("aceita")

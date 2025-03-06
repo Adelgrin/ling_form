@@ -30,7 +30,7 @@ for palavra in palavras:
     for caractere in palavra:
         atual = funcao[atual][caractere]
     if atual in aceitacao:
-        print("aceito")
+        print("aceita")
     else:
-        print("rejeito")
+        print("rejeita")
     atual = inicial

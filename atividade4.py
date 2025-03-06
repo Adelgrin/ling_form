@@ -9,17 +9,31 @@ tempfunc = []
 estados_entrada = input().split()
 for estado in estados_entrada:
     estados.append(estado)
+
+alfabeto_entrada = input().split()
+for alfa in alfabeto_entrada:
+    alfabeto.append(alfa)
+
+
 inicial = input()
 atual = inicial
 aceitacao_entrada = input().split()
 for aceita in aceitacao_entrada:
     aceitacao.append(aceita)
-alfabeto_entrada = input().split()
-for alfa in alfabeto_entrada:
-    alfabeto.append(alfa)
+
+
 for i in range(len(estados)):
     func_entrada = input().split()
-    funcao[func_entrada[0]] = {alfabeto[0] : func_entrada[1], alfabeto[1] : func_entrada[2]}
+    func = set()
+    for f in func_entrada:
+        if f == "vazio":
+            func.add("")
+            break
+        for item in f.split(","):
+            func.add(item)
+    
+
+    funcao[func[0]] = {alfabeto[0] : func[1], alfabeto[1] : func[2], {""} : func[3]}
     tempfunc = []
 
 input = input()

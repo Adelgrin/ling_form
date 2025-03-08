@@ -43,7 +43,10 @@ for palavra in palavras:
     atual = inicial
     for caractere in palavra:
         if caractere in funcao[atual]:
+            #print(list(funcao[atual][caractere]))
+            #print(caractere)
             atual = next(iter(funcao[atual][caractere]))
+            
         else:
             atual = None
             break

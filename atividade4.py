@@ -37,16 +37,19 @@ for i in range(len(estados)):
     funcao[func[0][0]] = {alfabeto[0]: set(func[1]), alfabeto[1]: set(func[2]), "": set(func[3])}
     #tempfunc = []
 
-input = input()
-palavras = input.split()
+entrada = input()
+estados_ativos = set()
+palavras = entrada.split()
 for palavra in palavras:
     atual = inicial
     for caractere in palavra:
+        estados_ativos.add(atual)
+        if funcao[atual][caractere] == None:
+            estados_ativos[funcao[atual][caractere].index()].pop()
+        print(list(estados_ativos))
+        print(caractere)
         if caractere in funcao[atual]:
-            #print(list(funcao[atual][caractere]))
-            #print(caractere)
             atual = next(iter(funcao[atual][caractere]))
-            
         else:
             atual = None
             break

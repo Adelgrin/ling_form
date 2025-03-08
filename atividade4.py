@@ -44,7 +44,7 @@ for palavra in palavras:
     atual = inicial
     for caractere in palavra:
         estados_ativos.add(atual)
-        if funcao[atual][caractere] == None:
+        if funcao[atual][caractere] == {}:
             estados_ativos[funcao[atual][caractere].index()].pop()
         print(list(estados_ativos))
         print(caractere)

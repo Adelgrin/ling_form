@@ -38,22 +38,24 @@ for i in range(len(estados)):
     #tempfunc = []
 
 entrada = input()
-estados_ativos = set()
+estados_ativos = [inicial]
 palavras = entrada.split()
 for palavra in palavras:
     atual = inicial
     for caractere in palavra:
-        estados_ativos.add(atual)
-        if funcao[atual][caractere] == {}:
-            estados_ativos[funcao[atual][caractere].index()].pop()
-        print(list(estados_ativos))
-        print(caractere)
-        if caractere in funcao[atual]:
-            atual = next(iter(funcao[atual][caractere]))
-        else:
-            atual = None
-            break
-    if atual in aceitacao:
-        print("aceita")
-    else:
-        print("rejeita")
+        for k in estados_ativos:
+            for l in funcao[k][caractere]:
+                estados_ativos.append(l)
+                estados_ativos = list(dict.fromkeys(estados_ativos))
+                estados_ativos[estados_ativos.index(k)] = next(iter(funcao[atual][caractere]))
+                if len(funcao[k]['']) != 0:
+                    for m in funcao[k]['']:
+                        estados_ativos.append(m)
+                        estados_ativos = list(dict.fromkeys(estados_ativos))
+                    #estados_ativos.append(funcao[k][''])
+            print(estados_ativos)
+            print(caractere)
+            if len(funcao[l][caractere]) == 0:
+                    estados_ativos.remove(l)
+                    break
+            

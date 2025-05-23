@@ -1,3 +1,4 @@
+import sys
 
 palavra = input()
 inicial = 'q1'
@@ -10,7 +11,8 @@ maquina = {
     'q3' : { '0' : ('q4','D','0'), 'x' : ('q3','D','x'), '_' : ('q5','E','_')},
     'q4' : { '0' : ('q3','D','x'), 'x' : ('q4','D','x'), '_' : ('qr','D','_')},
     'q5' : { '0' : ('q5','E','0'), 'x' : ('q5','E','x'), '_' : ('q2','D','_')},
-    'qr' : { '0' : ('qr','E','0'), '1' : ('qr','E','1'), 'x' : ('qr','E','x'), '_' : ('qr','E','_')}
+    'qr' : { '0' : ('qr','bad','0'), '1' : ('qr','bad','1'), 'x' : ('qr','bad','x'), '_' : ('qr','bad','_')},
+    'qf' : { '0' : ('qf','ok','0'), '1' : ('qf','ok','1'), 'x' : ('qf','ok','x'), '_' : ('qf','ok','_')}
 }
 
 #  10#10
@@ -40,8 +42,9 @@ try:
                 letra = localCabecote[posCabecote+1]
         elif maquina[atual][letra][1] == 'ok':
             flag = 1
-        #if maquina[atual][letra][0] == 'qr':
-             #posCabecote[4000000]
     print('aceita')
-except:
-     print("rejeita")
+except IndexError:
+    if atual == 'qf':
+        print("aceita")
+    else:
+        print("rejeita")

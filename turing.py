@@ -1,4 +1,3 @@
-
 palavra = input()
 inicial = 'q1'
 atual = inicial
